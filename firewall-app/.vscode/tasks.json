@@ -1,0 +1,19 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run Flask App Locally",
+      "type": "shell",
+      "command": "make local",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Deploy to Cloud Run",
+      "type": "shell",
+      "command": "make all",
+      "group": "build",
+      "problemMatcher": []
+    }
+  ]
+}
