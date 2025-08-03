@@ -29,7 +29,7 @@ Install a few essentials:
 
 ```bash
 sudo apt update
-sudo apt install nmap curl ca-certificates jq
+sudo apt install nmap curl ca-certificates jq net-tools
 ```
 
 ### Add Docker

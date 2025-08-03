@@ -7,6 +7,8 @@ Also, if you knock this out before your pentesters arrive, that'll force them to
 ## Repo Layout
 
 * Readme.md: This file describes the flow of the workshop
+* activeDirectory/: Tools for testing Active Directory
+* attackSurface/: Tools for scanning and otherwise discovering attack surface
+* cloud/: Tools for measuring cloud risk
 * firewall-app/: A vibe-coded fake firewall app used in part of the demo
-
-
+* setup/: Common setup steps for testing

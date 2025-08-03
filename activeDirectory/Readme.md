@@ -10,23 +10,26 @@ tar -xvzf bloodhound-cli-linux-amd64.tar.gz
 ./bloodhound-cli install
 # Note the URL and credentials!
 ./bloodhound-cli up
-
-## OR
-
-mv docker-compose.dev.yml docker-compose.yaml
-docker-compose up
+# Browse to localhost:8080
 ```
-
 
 ### Impacket
 
-Maybe do a chriselgee/impacket
-
-* GetPPPassword.py
-* GetUserSPNs.py
-* Certipy.py 
+```bash
+sudo apt install pipx
+python3 -m pipx install impacket
+pipx ensurepath
+```
 
 ### Certipy
+
+```bash
+git clone https://github.com/ly4k/Certipy.git
+cd Certipy
+python3 -m venv certipy-venv
+source certipy-venv/bin/activate
+pip install certipy-ad
+```
 
 https://github.com/ly4k/Certipy.git
 
