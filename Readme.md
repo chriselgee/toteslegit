@@ -4,6 +4,16 @@ This repository covers instructions for completing basic penetration testing on 
 While this is not a recommended replacement for quality, third-party pentesting, it's a great first step.
 Also, if you knock this out before your pentesters arrive, that'll force them to work harder and find deeper vulnerabilities!
 
+## How To Use This Repo
+
+Start with the steps in the `setup/` folder.
+This will help you get tools set up and, more importantly, start thinking about what is in scope.
+
+After that, a sensible order to go in might be:
+1. attackSurface
+2. cloud
+3. activeDirectory
+
 ## Repo Layout
 
 * Readme.md: This file describes the flow of the workshop

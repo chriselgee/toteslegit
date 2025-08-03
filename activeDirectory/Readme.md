@@ -6,7 +6,7 @@
 AD can be a great tool for administrators trying to manage corporate IT resources, but it is also quite complex.
 And with complexity comes: misconfigurations!
 
-#### Install:
+#### Install
 ```bash
 wget https://github.com/SpecterOps/bloodhound-cli/releases/latest/download/bloodhound-cli-linux-amd64.tar.gz
 tar -xvzf bloodhound-cli-linux-amd64.tar.gz
@@ -15,7 +15,7 @@ tar -xvzf bloodhound-cli-linux-amd64.tar.gz
 ./bloodhound-cli up
 ```
 
-#### Use:
+#### Use
 With the tool's Docker containers up and running, browse to [http://localhost:8080](http://localhost:8080).
 Use `admin` and the password provided in the `install` step; you will be forced to change it.
 
@@ -32,13 +32,49 @@ Once logged in, _Download Collectors_ gives .exe downloads to collect data from 
 
 ### Impacket
 
+[Impacket](https://github.com/fortra/impacket) is a suite of AD-focused tools.
+Some highlights are:
+* secretsdump.py: Pull passwords and hashes from a target machine.  Also great for turning ntds.dit and the SYSTEM hive into hashes for a password audit!
+* Get-GPPPassword.py: Look for old Group Policy Preference files - and local admin credentials stored within
+
+#### Install
+
+As a Python package, Impacket installs with `pipx`:
+
 ```bash
 sudo apt install pipx
 python3 -m pipx install impacket
 pipx ensurepath
 ```
 
+#### Use
+
+As a quick check, use Get-GPPPassword to see if you have any local admin creds hanging out in a group policy preference file:
+
+```bash
+Get-GPPPassword.py 'toteslegit.local'/'USER':'PASSWORD'@'DOMAIN_CONTROLLER'
+```
+
+Or, for a password audit, first get all the hashes from the domain controller:
+
+```cmd.exe
+vssadmin create shadow /for=c:
+copy \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1\windows\ntds\ntds.dit c:\ntds.dit
+reg save hklm\system c:\system /y
+```
+
+Move them to your testing machine - and be sure to delete the copies in the root of `c:\`!
+
+```bash
+secretsdump.py -ntds ./ntds.dit -system ./system -outputfile /tmp/hashes.txt LOCAL
+```
+
 ### Certipy
+
+[Certipy](https://github.com/ly4k/Certipy.git) looks for misconfigurations in AD Certificate Services.
+In a worst case, misconfigs might let any user sign in as any other (_ESC1_).
+
+#### Install
 
 ```bash
 git clone https://github.com/ly4k/Certipy.git
@@ -48,7 +84,18 @@ source certipy-venv/bin/activate
 pip install certipy-ad
 ```
 
-https://github.com/ly4k/Certipy.git
+#### Use
 
+```bash
+certipy find -u 'user@toteslegit.local' -p 'Passw0rd!' -dc-ip '10.0.0.100' -text -enabled -hide-admins
+```
+
+
+
+```bash
+[!] Vulnerabilities
+    ESC1                              : Enrollee supplies subject and template allows client authentication.
+    ESC8                              : Web Enrollment is enabled over HTTPS and Channel Binding is disabled.
+```
 
 ### Share Finders
