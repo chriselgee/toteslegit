@@ -30,45 +30,6 @@ Once logged in, _Download Collectors_ gives .exe downloads to collect data from 
 
 ![Bloodhound Queries](../images/BHQueries.png "Bloodhound Queries")
 
-### Impacket
-
-[Impacket](https://github.com/fortra/impacket) is a suite of AD-focused tools.
-Some highlights are:
-* secretsdump.py: Pull passwords and hashes from a target machine.  Also great for turning ntds.dit and the SYSTEM hive into hashes for a password audit!
-* Get-GPPPassword.py: Look for old Group Policy Preference files - and local admin credentials stored within
-
-#### Install
-
-As a Python package, Impacket installs with `pipx`:
-
-```bash
-sudo apt install pipx
-python3 -m pipx install impacket
-pipx ensurepath
-```
-
-#### Use
-
-As a quick check, use Get-GPPPassword to see if you have any local admin creds hanging out in a group policy preference file:
-
-```bash
-Get-GPPPassword.py 'toteslegit.local'/'USER':'PASSWORD'@'DOMAIN_CONTROLLER'
-```
-
-Or, for a password audit, first get all the hashes from the domain controller:
-
-```cmd.exe
-vssadmin create shadow /for=c:
-copy \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1\windows\ntds\ntds.dit c:\ntds.dit
-reg save hklm\system c:\system /y
-```
-
-Move them to your testing machine - and be sure to delete the copies in the root of `c:\`!
-
-```bash
-secretsdump.py -ntds ./ntds.dit -system ./system -outputfile /tmp/hashes.txt LOCAL
-```
-
 ### Certipy
 
 [Certipy](https://github.com/ly4k/Certipy.git) looks for misconfigurations in AD Certificate Services.
