@@ -11,8 +11,9 @@ This will help you get tools set up and, more importantly, start thinking about 
 
 After that, a sensible order to go in might be:
 1. attackSurface
-2. cloud
-3. activeDirectory
+1. cloud
+1. activeDirectory
+1. Password audit
 
 ## Repo Layout
 
@@ -21,4 +22,5 @@ After that, a sensible order to go in might be:
 * attackSurface/: Tools for scanning and otherwise discovering attack surface
 * cloud/: Tools for measuring cloud risk
 * firewall-app/: A vibe-coded fake firewall app used in part of the demo
+* passwordAudit/: Tools for measuring the security of Active Directory passwords
 * setup/: Common setup steps for testing
