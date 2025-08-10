@@ -60,6 +60,21 @@ docker pull chriselgee/responder
 docker run --rm -it --net=host --privileged chriselgee/responder:latest -I ens33
 ```
 
+### Kerberoasting
+
+#### Install
+
+It came with Impacket!
+
+#### Use
+
+From an attack machine that can reach a domain controller, use **any** valid domain creds to look for kerberoastable accounts.
+Once found, the tool will extract crackable hashes from Kerberos tickets.
+
+```bash
+GetUserSPNs.py toteslegit.local/user:Password123 -request -dc-ip 10.1.2.3
+```
+
 ### Hashcat
 
 #### Install
@@ -94,7 +109,9 @@ Use a mega list with crazy rules.
 For Windows hashes, this is generally the idea:
 
 ```bash
-hashcat -m1000 -a0 /tmp/hashes.txt ~/Downloads/rockyou.txt
+hashcat -m 1000 -a0 /tmp/hashes.txt ~/Downloads/rockyou.txt
 ```
+
+If you're trying to crack Kerberos tickets, the mode is more likely `-m 13100`, but don't be afraid to check the [wiki](https://hashcat.net/wiki/doku.php?id=example_hashes).
 
 If we're using mangling rules, we would add something like `-r OneRuleToRuleThemStill.rule`.
