@@ -35,6 +35,8 @@ Once logged in, _Download Collectors_ gives .exe downloads to collect data from 
 [Certipy](https://github.com/ly4k/Certipy.git) looks for misconfigurations in AD Certificate Services.
 In a worst case, misconfigs might let any user sign in as any other (_ESC1_).
 
+(Consider [Certify](https://github.com/GhostPack/Certify) if you're looking for a Windows-based option.)
+
 #### Install
 
 ```bash
@@ -47,11 +49,12 @@ pip install certipy-ad
 
 #### Use
 
+Run the tool with valid domain credentials from a system that can reach domain servers.
+
 ```bash
 certipy find -u 'user@toteslegit.local' -p 'Passw0rd!' -dc-ip '10.0.0.100' -text -enabled -hide-admins
 ```
-
-
+Look for _ESC_ in the output:
 
 ```bash
 [!] Vulnerabilities
@@ -60,3 +63,10 @@ certipy find -u 'user@toteslegit.local' -p 'Passw0rd!' -dc-ip '10.0.0.100' -text
 ```
 
 ### Share Finders
+
+Use cool command line tricks or snazzy tools to find things in file shares that shouldn't be there:
+
+* [Trufflehog](https://github.com/trufflesecurity/trufflehog) will search for API keys and other secrets, especially in code repositories
+* Windows share search tools like [Find-InterestingDomainShareFile](https://github.com/PowerShellMafia/PowerSploit/tree/master/Recon)
+* PowerShell like `Get-ChildItem -Recurse C:\Fileshare\ | Select-String -Pattern "password" -SimpleMatch`
+* Bash like `grep -rni password Fileshare/`
