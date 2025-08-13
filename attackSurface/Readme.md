@@ -28,8 +28,8 @@ There are plenty of options here.
 Uses one or more of these:
 
 ```bash
-sudo nmap -iL -sV ips-dedup.txt -oA quickscan
-sudo nmap -iL -p0- -sV ips-dedup.txt -oA thoroughscan
+sudo nmap -iL ips-dedup.txt -sV -oA quickscan
+sudo nmap -iL ips-dedup.txt -p0- -sV -oA thoroughscan
 sudo nmap -iL ips-dedup.txt -sU --top-ports=20 -oA udpscan
 ```
 
