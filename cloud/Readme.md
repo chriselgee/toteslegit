@@ -34,6 +34,8 @@ Syntax varies some across [AWS](https://github.com/nccgroup/ScoutSuite/wiki/Amaz
 Also, **importantly**, there are specific access/read requirements for the account Scout runs under.
 Check the tool's documentation to ensure it can access the info it needs to assess your environment.
 
+![Example Scout Dashboard](../images/ScoutDashboard.png "Example Scout Dashboard")
+
 ### CSP Dashboards
 
 Vendor security dashboards are absolutely worth checking.
