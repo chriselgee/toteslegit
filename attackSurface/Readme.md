@@ -40,5 +40,5 @@ sudo nmap -iL ips-dedup.txt -sU --top-ports=20 -oA udpscan
 docker run --rm -v $(pwd):/data leonjza/gowitness gowitness scan nmap -f thoroughscan.xml --open-only --service-contains http --write-db
 # Or if you have a good idea of what the web hosts are
 docker run --rm -v $(pwd):/data leonjza/gowitness gowitness scan file -f webhosts.txt --write-db
-docker run --rm -v $(pwd):/data -p127.0.0.1:7171:7171 leonjza/gowitness gowitness report server --host 127.0.0.1
+docker run --rm -v $(pwd):/data -p127.0.0.1:7171:7171 leonjza/gowitness gowitness report server --host 0.0.0.0
 ```
