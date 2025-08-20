@@ -82,9 +82,9 @@ GetUserSPNs.py toteslegit.local/user:Password123 -request -dc-ip 10.1.2.3
 Installing [Hashcat](https://hashcat.net/hashcat/) is straightforward:
 
 ```bash
-wget https://hashcat.net/files/hashcat-7.0.0.7z
-7z x hashcat-7.0.0.7z
-sudo ln -s $PWD/hashcat-7.0.0/hashcat.bin /usr/bin/hashcat
+wget https://hashcat.net/files/hashcat-7.1.1.7z
+7z x hashcat-7.1.1.7z
+sudo ln -s $PWD/hashcat-7.1.1/hashcat.bin /usr/bin/hashcat
 ```
 
 What's trickier is doing this on the right hardware.
