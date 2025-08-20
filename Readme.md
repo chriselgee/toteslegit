@@ -13,10 +13,10 @@ Start with the steps in the `setup/` folder.
 This will help you get tools set up and, more importantly, start thinking about what is in scope.
 
 After that, a sensible order to go in might be:
-1. `attackSurface/`
-1. `cloud/`
-1. `activeDirectory/`
-1. `passwordAudit/`
+1. [attackSurface/](attackSurface/Readme.md)
+1. [cloud/](cloud/Readme.md)
+1. [activeDirectory/](activeDirectory/Readme.md)
+1. [passwordAudit/](passwordAudit/Readme.md)
 
 ## Repo Layout
 
